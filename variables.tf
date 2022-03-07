@@ -1,34 +1,41 @@
-variable "resource_group_name" {
+variable "recovery_services_vault_resource_group_name" {
   type        = string
-  description = "Resource Group name of the Virtual Network"
+  description = "Resource Group name of the recovery services vault"
+}
+
+variable "recovery_services_vault_name" {
+  type        = string
+  description = "Name of the recovery services vault to backup to"
 }
 
 variable "location" {
   type        = string
-  description = "Location of the Virtual Network"
+  description = "Location to deploy to"
 }
 
-variable "virtual_network_name" {
+variable "virtual_machine_name" {
   type        = string
-  description = "Name of the Virtual Network to deploy"
+  description = "Name of virtual machine to back up"
 }
 
-variable "virtual_network_address_space" {
-  type        = list(string)
-  description = "Address space of the Virtual Network to deploy"
-}
-
-variable "log_analytics_workspace_name" {
+variable "virtual_machine_resource_group_name" {
   type        = string
-  description = "Name of Log Analytics Workspace to send diagnostics"
+  description = "Resource Group name of virtual machine to back up"
 }
 
-variable "log_analytics_workspace_resource_group_name" {
+variable "backup_policy_name" {
   type        = string
-  description = "Resource Group of Log Analytics Workspace to send diagnostics"
+  default     = "VMBackupPolicy"
+  description = "Name of VM backup policy to attach VM to"
+}
+
+variable "sql_backup_policy_name" {
+  type        = string
+  default     = "HourlyLogBackup"
+  description = "Name of SQL backup policy to attach VM to"
 }
 
 variable "tags" {
   type        = map(string)
-  description = "Tags of the Virtual Network"
+  description = "Tags to apply"
 }
