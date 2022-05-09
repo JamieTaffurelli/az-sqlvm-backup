@@ -24,7 +24,7 @@ resource "azurerm_backup_protected_vm" "vm" {
 resource "azurerm_resource_group_template_deployment" "registerbackupsqlvm" {
   name                = "register-sql-${var.virtual_machine_name}"
   resource_group_name = var.recovery_services_vault_resource_group_name
-  template_content    = file("arm\\registerSqlVMBackup.json")
+  template_content    = file("arm/registerSqlVMBackup.json")
   parameters_content = jsonencode({
     "recoveryServicesVaultName" = {
       value = var.recovery_services_vault_name
@@ -48,7 +48,7 @@ resource "azurerm_resource_group_template_deployment" "registerbackupsqlvm" {
 resource "azurerm_resource_group_template_deployment" "autobackupsqlvm" {
   name                = "auto-backup-sql-${var.virtual_machine_name}"
   resource_group_name = var.recovery_services_vault_resource_group_name
-  template_content    = file("arm\\registerSqlVMDatabaseAutoBackup.json")
+  template_content    = file("arm/registerSqlVMDatabaseAutoBackup.json")
   parameters_content = jsonencode({
     "recoveryServicesVaultName" = {
       value = var.recovery_services_vault_name
