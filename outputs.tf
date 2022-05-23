@@ -1,5 +1,5 @@
 output "sql_backup_resource_id" {
-  value       = jsondecode(azurerm_resource_group_template_deployment.vm.output_content).resourceID.value
+  value       = jsondecode(azurerm_resource_group_template_deployment.registerbackupsqlvm.output_content).resourceID.value
   description = "Resource ID of the sql backup association"
 }
 
