@@ -38,5 +38,11 @@
         "policyId": "[resourceId('Microsoft.RecoveryServices/vaults/backupPolicies', parameters('recoveryServicesVaultName'), parameters('backupPolicyName'))]"
       }
     }
-  ]
+  ],
+  "outputs": {
+    "resourceID": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.RecoveryServices/vaults/backupFabrics/backupProtectionIntent', concat(parameters('recoveryServicesVaultName'), '/Azure/', parameters('vmName')))).id]"
+    }
+  }
 }
